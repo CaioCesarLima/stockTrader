@@ -1,5 +1,5 @@
 <template>
-  <h1>Cabeçalho</h1>
+  <v-toolbar></v-toolbar>
 </template>
 
 <script>
