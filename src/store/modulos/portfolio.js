@@ -4,7 +4,8 @@ export default{
         stocks: []
     },
     mutations:{
-        buyStocks(state, {stockId, stockPrice, quantity}){
+        buyStock(state, {stockId, stockPrice, quantity}){
+            console.log(stockId, stockPrice, quantity)
             const record = state.stocks.find(element=>element.id == stockId)
             if(record){
                 record.quantity += quantity
