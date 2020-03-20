@@ -6,10 +6,10 @@
       </v-card-title>
     </v-card>
     <v-card fill-height>
-      <v-text-field label='Quantidade' type='number' v-model.number="quantity"></v-text-field>
+      <v-text-field label='Quantidade' type='number' v-model.number="quantity" :error="inssuficientForSell || !Number.isInteger(quantity)"></v-text-field>
       <v-btn class="blue darken-3 white--text"
-      :disabled="quantity <=0 || !Number.isInteger(quantity)"
-      @click="sellStock">Vender</v-btn>
+      :disabled="quantity <=0 || !Number.isInteger(quantity) || inssuficientForSell"
+      @click="sellStock">{{inssuficientForSell ? 'Insuficiente' : "Vender"}}</v-btn>
     </v-card>
   </v-flex>
 </template>
@@ -22,6 +22,11 @@ export default {
   data(){
     return {
       quantity: 0
+    }
+  },
+  computed:{
+    inssuficientForSell(){
+      return this.quantity > this.stock.quantity
     }
   },
   methods: {
