@@ -25,12 +25,25 @@
           </v-list-tile>
         </v-list>
       </v-menu>
+      <v-layout align-center>
+        <span class="text-uppecase grey--text text-darken-2">
+          Saldo: {{ founds }}
+        </span>
+      </v-layout>
     </v-toolbar-items>
   </v-toolbar>
 </template>
 
 <script>
-export default {};
+export default {
+
+  computed:{
+    founds(){
+      return this.$store.getters.founds
+    }
+  }
+
+};
 </script>
 
 <style>
