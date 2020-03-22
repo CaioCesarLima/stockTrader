@@ -12,7 +12,7 @@
     <v-divider class="my-4"></v-divider>
     <p class="display-1">
       <strong>Seu saldo:</strong>
-      {{founds}}
+      {{founds | currency}}
     </p>
   </div>
 </template>
