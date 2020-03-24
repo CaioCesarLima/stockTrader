@@ -17,11 +17,11 @@
       <v-menu offset-y>
         <v-btn slot="activator" flat>Salvar e carregar</v-btn>
         <v-list>
-          <v-list-tile>
+          <v-list-tile @click="saveData">
             <v-list-tile-title>Salvar Dados</v-list-tile-title>
           </v-list-tile>
           <v-list-tile>
-            <v-list-tile-title>Salvar Dados</v-list-tile-title>
+            <v-list-tile-title>Carregar Dados</v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-menu>
@@ -48,6 +48,12 @@ export default {
     endDay(){
       
       this.$store.dispatch('randomizeStock')
+    },
+    saveData(){
+      const {founds, stockPortfolio, stocks} = this.$store.getters
+      this.$http.put('data.json',{
+        founds, stockPortfolio, stocks
+      })
     }
   }
 
