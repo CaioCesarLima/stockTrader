@@ -5,7 +5,6 @@ export default{
     },
     mutations:{
         buyStock(state, {stockId, stockPrice, quantity}){
-            console.log(stockId, stockPrice, quantity)
             const record = state.stocks.find(element=>element.id == stockId)
             if(record){
                 record.quantity += quantity
@@ -25,6 +24,10 @@ export default{
                 state.stocks.splice(state.stocks.indexOf(record), 1)
             }
             state.founds += stockPrice * quantity
+        },
+        setPortfolio(state, portfolio){
+            state.founds = portfolio.founds
+            state.stocks = portfolio.stocksPortfolio ? portfolio.stocksPortfolio : []
         }
     },
     actions:{
